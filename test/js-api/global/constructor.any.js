@@ -90,8 +90,9 @@ test(() => {
 test(() => {
   const argument = { "value": "i64" };
   const global = new WebAssembly.Global(argument);
-  assert_throws(new TypeError(), () => global.value);
-  assert_throws(new TypeError(), () => global.valueOf());
+
+  assert_equals(global.value, 0n, "initial value using ToJSValue");
+  assert_equals(global.valueOf(), 0n, "initial value using ToJSValue");
 }, "i64 with default");
 
 for (const type of ["i32", "f32", "f64"]) {

@@ -45,8 +45,8 @@ function test_bad_imports(t) {
       value);
   }
 
-  t(`Importing an i64 global`,
-    new WebAssembly.LinkError(),
+  t(`Importing an i64 global with an incorrectly-typed value`,
+    new TypeError(),
     builder => {
       builder.addImportedGlobal("module", "global", kWasmI64);
     },
